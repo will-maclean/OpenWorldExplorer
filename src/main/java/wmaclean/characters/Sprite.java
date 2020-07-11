@@ -4,10 +4,8 @@ import wmaclean.gui.Textures;
 import wmaclean.tile.Coordinate;
 import wmaclean.tile.TileChunk;
 
-import javax.imageio.ImageIO;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.InputStream;
 import java.util.List;
 
 public class Sprite {
@@ -83,18 +81,22 @@ public class Sprite {
 
         for(int x = 0; x < h; x++){
             for(int y = 0; y < w; y++){
-                spriteArray[x][y] = getSprite(x, y);
+                spriteArray[x][y] = getSprite(y, x);
             }
         }
     }
 
     private BufferedImage getSprite(int x, int y) {
         assert this.spriteSheet != null;
-        return this.spriteSheet.getSubimage(x * w, y * h, wSprite, hSprite);
+        return this.spriteSheet.getSubimage(x * wSprite, y * hSprite, wSprite, hSprite);
     }
 
     public BufferedImage getSpriteSheet() {
         return spriteSheet;
+    }
+
+    public BufferedImage[][] getSpriteArray(){
+        return this.spriteArray;
     }
 
     public BufferedImage[] getSpriteArray(int i){
@@ -111,9 +113,9 @@ public class Sprite {
         float x = pos.x;
         float y = pos.y;
 
-        for(int i = 0; i < img.size(); i++){
-            if(img.get(i) != null){
-                g.drawImage(img.get(i), (int) x, (int) y, width, height, null);
+        for (BufferedImage bufferedImage : img) {
+            if (bufferedImage != null) {
+                g.drawImage(bufferedImage, (int) x, (int) y, width, height, null);
             }
 
             x += xOffset;

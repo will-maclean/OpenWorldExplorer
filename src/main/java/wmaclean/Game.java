@@ -310,8 +310,8 @@ public class Game extends Canvas implements Runnable{
     }
 
     public TileChunk findChunk(List<TileChunk> chunkList, TileChunk chunk, Direction direction){
-        float xOffset = direction.xOffset();
-        float yOffset = direction.yOffset();
+        float xOffset = direction.xChunkOffset();
+        float yOffset = direction.yChunkOffset();
 
         Coordinate searchCoord = new Coordinate((int)(chunk.x + xOffset), (int)(chunk.y + yOffset));
 

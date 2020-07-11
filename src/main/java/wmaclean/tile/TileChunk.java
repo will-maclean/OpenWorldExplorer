@@ -7,7 +7,7 @@ import java.awt.Graphics;
 public class TileChunk implements Comparable<TileChunk>{
 
     private static final int numTilesWidth = 16;
-    public static final int tileSize = 24;
+    public static final int tileSize = 32;
     public static final int CHUNKSIZE = numTilesWidth * tileSize;
 
     public final Tile[][] tiles;
