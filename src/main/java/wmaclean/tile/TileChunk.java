@@ -52,7 +52,7 @@ public class TileChunk implements Comparable<TileChunk>{
                 double random = Math.random();
                 if(random < 0.8){
                     tiles[i][j] = new GrassTile(this.game, tileSize, this.x + j * tileSize, this.y + i * tileSize);
-                }else if (random < 0.99){
+                }else if (random < 0.97){
                     tiles[i][j] = new DirtTile(this.game, tileSize, this.x + j * tileSize, this.y + i * tileSize);
                 }else{
                     tiles[i][j] = new TreeTile(this.game, tileSize, this.x + j * tileSize, this.y + i * tileSize);

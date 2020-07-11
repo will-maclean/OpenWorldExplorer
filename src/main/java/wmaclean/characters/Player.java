@@ -18,8 +18,8 @@ public class Player extends Character{
 
     public Player(int x, int y, Game game) {
         super(x, y, game, CharID.Player);
-        this.width = (int) (TileChunk.tileSize * 1.8);
-        this.height = (int) (TileChunk.tileSize * 2.4);
+        this.width = (int) (TileChunk.tileSize * 1.6);
+        this.height = (int) (TileChunk.tileSize * 1.8);
         this.velX = 0;
         this.velY = 0;
 
