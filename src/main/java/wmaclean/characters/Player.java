@@ -8,7 +8,7 @@ import java.awt.Graphics;
 
 public class Player extends Character{
 
-    public static final float speed = 3;
+    public static final float speed = 2;
 
     public Player(int x, int y, Game game) {
         super(x, y, game, CharID.Player);
