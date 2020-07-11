@@ -198,7 +198,6 @@ public class Game extends Canvas implements Runnable{
         }
 
         // add all newly visible chunks
-        this.allChunks.addAll(newChunks);
         this.visibleChunks.addAll(newChunks);
         this.visibleChunks.removeAll(removeChunks);
     }
@@ -209,6 +208,7 @@ public class Game extends Canvas implements Runnable{
             TileChunk newChunk = new TileChunk(chunk.x + TileChunk.CHUNKSIZE, chunk.y, this, true);
             addConnections(newChunk);
             newChunks.add(newChunk);
+            this.allChunks.add(newChunk);
         }else if(!(chunk.getRight().isVisible())){
             chunk.getRight().setVisible(true);
             newChunks.add(chunk.getRight());
@@ -221,6 +221,7 @@ public class Game extends Canvas implements Runnable{
             TileChunk newChunk = new TileChunk(chunk.x, chunk.y + TileChunk.CHUNKSIZE, this, true);
             addConnections(newChunk);
             newChunks.add(newChunk);
+            this.allChunks.add(newChunk);
         }else{
             if(!chunk.getDown().isVisible()){
                 chunk.getDown().setVisible(true);
@@ -235,6 +236,7 @@ public class Game extends Canvas implements Runnable{
             TileChunk newChunk = new TileChunk(chunk.x, chunk.y - TileChunk.CHUNKSIZE, this, true);
             addConnections(newChunk);
             newChunks.add(newChunk);
+            this.allChunks.add(newChunk);
         }else{
             if(!chunk.getUp().isVisible()){
                 chunk.getUp().setVisible(true);
@@ -249,6 +251,7 @@ public class Game extends Canvas implements Runnable{
             TileChunk newChunk = new TileChunk(chunk.x - TileChunk.CHUNKSIZE, chunk.y, this, true);
             addConnections(newChunk);
             newChunks.add(newChunk);
+            this.allChunks.add(newChunk);
         }else{
             if(!chunk.getLeft().isVisible()){
                 chunk.getLeft().setVisible(true);

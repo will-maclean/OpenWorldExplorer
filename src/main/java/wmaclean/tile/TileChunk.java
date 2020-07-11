@@ -8,7 +8,7 @@ import java.util.Random;
 public class TileChunk {
 
     private static final int numTilesWidth = 16;
-    public static final int tileSize = 16;
+    public static final int tileSize = 24;
     public static final int CHUNKSIZE = numTilesWidth * tileSize;
 
     public final Tile[][] tiles;
