@@ -13,6 +13,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -128,10 +129,16 @@ public class Game extends Canvas implements Runnable{
 
     private void tick() {
         checkVisibleChunks();
+        sortVisibleChunks();
         this.characterHandler.tick();
         Player player = this.characterHandler.getPlayer();
         this.posX -= player.getVelX();
         this.posY -= player.getVelY();
+    }
+
+    private void sortVisibleChunks() {
+        // have to sort visible chunks by their y coord so that they render in the right order (top down)
+        Collections.sort(this.visibleChunks);
     }
 
     public void checkVisibleChunks(){
