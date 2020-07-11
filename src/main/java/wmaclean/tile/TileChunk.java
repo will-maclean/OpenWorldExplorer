@@ -3,9 +3,8 @@ package wmaclean.tile;
 import wmaclean.Game;
 
 import java.awt.Graphics;
-import java.util.Random;
 
-public class TileChunk {
+public class TileChunk implements Comparable<TileChunk>{
 
     private static final int numTilesWidth = 16;
     public static final int tileSize = 24;
@@ -23,7 +22,7 @@ public class TileChunk {
 
     private boolean visible;
 
-    public final int x, y;
+    public final Integer x, y;
 
     public TileChunk(final int x, final int y, Game game){
         this(x, y, game, true);
@@ -52,9 +51,9 @@ public class TileChunk {
             for(int j = 0; j < tiles[0].length; j++){
                 double random = Math.random();
                 if(random < 0.8){
-                    tiles[i][j] = new DirtTile(this.game, tileSize, this.x + j * tileSize, this.y + i * tileSize);
-                }else if (random < 0.98){
                     tiles[i][j] = new GrassTile(this.game, tileSize, this.x + j * tileSize, this.y + i * tileSize);
+                }else if (random < 0.99){
+                    tiles[i][j] = new DirtTile(this.game, tileSize, this.x + j * tileSize, this.y + i * tileSize);
                 }else{
                     tiles[i][j] = new TreeTile(this.game, tileSize, this.x + j * tileSize, this.y + i * tileSize);
                 }
@@ -123,5 +122,10 @@ public class TileChunk {
                 + "(" + this.corners[1].x + ", " + this.corners[1].y + ") "
                 + "(" + this.corners[2].x + ", " + this.corners[2].y + ") "
                 + "(" + this.corners[3].x + ", " + this.corners[3].y + ")";
+    }
+
+    @Override
+    public int compareTo(TileChunk other) {
+        return this.y.compareTo(other.y);
     }
 }
