@@ -14,7 +14,7 @@ public class Textures {
     public static final BufferedImage playerSprite = loadImage("playerSprite.png");
     public static final BufferedImage treeSprite = loadImage("treeSprite.png");
 
-    private static BufferedImage loadImage(String name) {
+    public static BufferedImage loadImage(String name) {
         BufferedImage img = null;
         try {
             img = ImageIO.read(new File(resourcesPath.concat(name)));
