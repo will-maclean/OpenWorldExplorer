@@ -12,6 +12,7 @@ public class Textures {
     public static final BufferedImage grassTexture = loadImage("grassTexture2.png");
     public static final BufferedImage dirtTexture = loadImage("dirtTexture.png");
     public static final BufferedImage playerSprite = loadImage("playerSprite.png");
+    public static final BufferedImage treeSprite = loadImage("treeSprite.png");
 
     private static BufferedImage loadImage(String name) {
         BufferedImage img = null;

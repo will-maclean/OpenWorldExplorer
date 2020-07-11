@@ -25,15 +25,12 @@ public class TileChunk {
 
     public final int x, y;
 
-    private final Random r;
-
     public TileChunk(final int x, final int y, Game game){
         this(x, y, game, true);
     }
 
     public TileChunk(final int x, final int y, Game game, boolean visible){
         this.game = game;
-        this.r = new Random();
         this.x = x;
         this.y = y;
         this.visible = visible;
@@ -53,10 +50,13 @@ public class TileChunk {
         // todo - make this bit smarter, use the other tile types
         for(int i = 0; i < tiles.length; i++){
             for(int j = 0; j < tiles[0].length; j++){
-                if(this.r.nextInt(10) > 8){
+                double random = Math.random();
+                if(random < 0.8){
                     tiles[i][j] = new DirtTile(this.game, tileSize, this.x + j * tileSize, this.y + i * tileSize);
-                }else{
+                }else if (random < 0.98){
                     tiles[i][j] = new GrassTile(this.game, tileSize, this.x + j * tileSize, this.y + i * tileSize);
+                }else{
+                    tiles[i][j] = new TreeTile(this.game, tileSize, this.x + j * tileSize, this.y + i * tileSize);
                 }
             }
         }
