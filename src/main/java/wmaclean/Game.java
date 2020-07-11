@@ -5,6 +5,7 @@ import wmaclean.characters.Player;
 import wmaclean.gui.KeyInput;
 import wmaclean.gui.Window;
 import wmaclean.tile.Coordinate;
+import wmaclean.tile.Direction;
 import wmaclean.tile.TileChunk;
 
 import java.awt.Canvas;
@@ -33,6 +34,7 @@ public class Game extends Canvas implements Runnable{
     public float posX;
     public float posY;
 
+    private final List<TileChunk> allChunks;
     private final List<TileChunk> visibleChunks;
     private final CharacterHandler characterHandler;
 
@@ -41,11 +43,13 @@ public class Game extends Canvas implements Runnable{
         this.posX = 0;
         this.posY = 0;
 
+        this.allChunks = new LinkedList<>();
         this.visibleChunks = new LinkedList<>();
         this.characterHandler = new CharacterHandler(this);
         this.characterHandler.setCharacter(new Player(WIDTH / 2, HEIGHT / 2, this));
         this.addKeyListener(new KeyInput(this.characterHandler));
-        this.visibleChunks.add(new TileChunk(0, 0, this));
+        this.allChunks.add(new TileChunk(0, 0, this));
+        this.visibleChunks.add(allChunks.get(0));
     }
 
     public void begin(){
@@ -95,7 +99,8 @@ public class Game extends Canvas implements Runnable{
             if(System.currentTimeMillis() - timer > 1000)
             {
                 timer += 1000;
-                System.out.println("FPS: "+ frames);
+                System.out.println("FPS: " + frames);
+                System.out.println("Chunks: " + this.allChunks.size());
                 frames = 0;
             }
         }
@@ -193,6 +198,7 @@ public class Game extends Canvas implements Runnable{
         }
 
         // add all newly visible chunks
+        this.allChunks.addAll(newChunks);
         this.visibleChunks.addAll(newChunks);
         this.visibleChunks.removeAll(removeChunks);
     }
@@ -201,8 +207,7 @@ public class Game extends Canvas implements Runnable{
         if(chunk.getRight() == null){
             // need to create a new chunk right
             TileChunk newChunk = new TileChunk(chunk.x + TileChunk.CHUNKSIZE, chunk.y, this, true);
-            chunk.setRight(newChunk);
-            newChunk.setLeft(chunk);
+            addConnections(newChunk);
             newChunks.add(newChunk);
         }else if(!(chunk.getRight().isVisible())){
             chunk.getRight().setVisible(true);
@@ -214,8 +219,7 @@ public class Game extends Canvas implements Runnable{
         if(chunk.getDown() == null){
             // need to create a new chunk above
             TileChunk newChunk = new TileChunk(chunk.x, chunk.y + TileChunk.CHUNKSIZE, this, true);
-            chunk.setDown(newChunk);
-            newChunk.setUp(chunk);
+            addConnections(newChunk);
             newChunks.add(newChunk);
         }else{
             if(!chunk.getDown().isVisible()){
@@ -229,8 +233,7 @@ public class Game extends Canvas implements Runnable{
         if(chunk.getUp() == null){
             // need to create a new chunk above
             TileChunk newChunk = new TileChunk(chunk.x, chunk.y - TileChunk.CHUNKSIZE, this, true);
-            chunk.setUp(newChunk);
-            newChunk.setDown(chunk);
+            addConnections(newChunk);
             newChunks.add(newChunk);
         }else{
             if(!chunk.getUp().isVisible()){
@@ -244,8 +247,7 @@ public class Game extends Canvas implements Runnable{
         if(chunk.getLeft() == null){
             // need to create a new chunk left
             TileChunk newChunk = new TileChunk(chunk.x - TileChunk.CHUNKSIZE, chunk.y, this, true);
-            chunk.setLeft(newChunk);
-            newChunk.setRight(chunk);
+            addConnections(newChunk);
             newChunks.add(newChunk);
         }else{
             if(!chunk.getLeft().isVisible()){
@@ -266,5 +268,51 @@ public class Game extends Canvas implements Runnable{
 
     public List<TileChunk> getVisibleChunks() {
         return visibleChunks;
+    }
+
+    private void addConnections(TileChunk chunk){
+
+        // left
+        TileChunk chunkToTheLeft = findChunk(this.allChunks, chunk, Direction.LEFT);
+        if(chunkToTheLeft != null){
+            chunk.setLeft(chunkToTheLeft);
+            chunkToTheLeft.setRight(chunk);
+        }
+
+        // right
+        TileChunk chunkToTheRight = findChunk(this.allChunks, chunk, Direction.RIGHT);
+        if(chunkToTheRight != null){
+            chunk.setRight(chunkToTheRight);
+            chunkToTheRight.setLeft(chunk);
+        }
+
+        // Up
+        TileChunk chunkAbove = findChunk(this.allChunks, chunk, Direction.UP);
+        if(chunkAbove != null){
+            chunk.setUp(chunkAbove);
+            chunkAbove.setDown(chunk);
+        }
+
+        // down
+        TileChunk chunkBelow = findChunk(this.allChunks, chunk, Direction.DOWN);
+        if(chunkBelow != null){
+            chunk.setDown(chunkBelow);
+            chunkBelow.setUp(chunk);
+        }
+    }
+
+    public TileChunk findChunk(List<TileChunk> chunkList, TileChunk chunk, Direction direction){
+        float xOffset = direction.xOffset();
+        float yOffset = direction.yOffset();
+
+        Coordinate searchCoord = new Coordinate((int)(chunk.x + xOffset), (int)(chunk.y + yOffset));
+
+        for(TileChunk tileChunk : chunkList){
+            if(tileChunk.corners[0].equals(searchCoord)){
+                return tileChunk;
+            }
+        }
+
+        return null;
     }
 }
