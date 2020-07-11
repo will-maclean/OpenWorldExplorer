@@ -4,7 +4,6 @@ import wmaclean.Game;
 import wmaclean.gui.Textures;
 
 import java.awt.Graphics;
-import java.util.Random;
 
 public class TreeTile extends Tile{
 
