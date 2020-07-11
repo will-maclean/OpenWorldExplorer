@@ -116,4 +116,12 @@ public class TileChunk {
     public void setVisible(boolean visible) {
         this.visible = visible;
     }
+
+    @Override
+    public String toString() {
+        return "(" + this.corners[0].x + ", " + this.corners[0].y + ") "
+                + "(" + this.corners[1].x + ", " + this.corners[1].y + ") "
+                + "(" + this.corners[2].x + ", " + this.corners[2].y + ") "
+                + "(" + this.corners[3].x + ", " + this.corners[3].y + ")";
+    }
 }
