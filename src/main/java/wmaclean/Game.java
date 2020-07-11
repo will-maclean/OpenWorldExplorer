@@ -15,11 +15,18 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+/*
+fixme:
+1. There's a bug where tile chunks are created non-stop. probably an issue in the logic
+around when to make a new chunk
+2. gonna have to sort chunks based on their y coords to make sure they render from the top
+down.
+ */
 public class Game extends Canvas implements Runnable{
 
     private Thread thread;
     private boolean running = false;
-    public static final int WIDTH = 800, HEIGHT = WIDTH / 12 * 9;
+    public static final int WIDTH = 800, HEIGHT = 800;
     public static final String TITLE = "EXPLORER";
     public static final Color backgroundColor = Color.BLACK;
 
@@ -39,10 +46,10 @@ public class Game extends Canvas implements Runnable{
         this.characterHandler.setCharacter(new Player(WIDTH / 2, HEIGHT / 2, this));
         this.addKeyListener(new KeyInput(this.characterHandler));
         this.visibleChunks.add(new TileChunk(0, 0, this));
-        checkVisibleChunks();
+    }
 
+    public void begin(){
         new Window(WIDTH, HEIGHT, TITLE, this);
-
     }
 
     public synchronized void start(){
@@ -124,7 +131,7 @@ public class Game extends Canvas implements Runnable{
         this.posY -= player.getVelY();
     }
 
-    private void checkVisibleChunks(){
+    public void checkVisibleChunks(){
         List<TileChunk> newChunks = new ArrayList<>();
         List<TileChunk> removeChunks = new ArrayList<>();
 
@@ -255,5 +262,9 @@ public class Game extends Canvas implements Runnable{
 
     public static boolean between(float min, float max, float check){
         return check > min && check < max;
+    }
+
+    public List<TileChunk> getVisibleChunks() {
+        return visibleChunks;
     }
 }
