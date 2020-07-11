@@ -18,9 +18,7 @@ import java.util.List;
 
 /*
 fixme:
-1. There's a bug where tile chunks are created non-stop. probably an issue in the logic
-around when to make a new chunk
-2. gonna have to sort chunks based on their y coords to make sure they render from the top
+1. gonna have to sort chunks based on their y coords to make sure they render from the top
 down.
  */
 public class Game extends Canvas implements Runnable{
