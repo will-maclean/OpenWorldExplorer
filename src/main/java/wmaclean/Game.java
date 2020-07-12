@@ -6,9 +6,9 @@ import wmaclean.gui.HUD;
 import wmaclean.gui.KeyInput;
 import wmaclean.gui.Textures;
 import wmaclean.gui.Window;
-import wmaclean.tile.Coordinate;
-import wmaclean.tile.Direction;
-import wmaclean.tile.TileChunk;
+import wmaclean.chunk.Coordinate;
+import wmaclean.chunk.Direction;
+import wmaclean.chunk.TileChunk;
 import wmaclean.time.Clock;
 import wmaclean.time.TimeOfDay;
 

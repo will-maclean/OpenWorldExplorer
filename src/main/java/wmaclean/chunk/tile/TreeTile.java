@@ -1,4 +1,4 @@
-package wmaclean.tile;
+package wmaclean.chunk.tile;
 
 import wmaclean.Game;
 import wmaclean.gui.Textures;

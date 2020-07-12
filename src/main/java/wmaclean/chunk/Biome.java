@@ -1,4 +1,4 @@
-package wmaclean.tile;
+package wmaclean.chunk;
 
 public enum Biome {
     Plain,

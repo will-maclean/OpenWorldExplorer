@@ -1,7 +1,8 @@
-package wmaclean.tile;
+package wmaclean.chunk.tile;
 
 import org.junit.Test;
 import wmaclean.Game;
+import wmaclean.chunk.TileChunk;
 
 import static org.junit.Assert.*;
 

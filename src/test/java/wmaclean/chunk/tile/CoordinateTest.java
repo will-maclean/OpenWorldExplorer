@@ -1,6 +1,7 @@
-package wmaclean.tile;
+package wmaclean.chunk.tile;
 
 import org.junit.Test;
+import wmaclean.chunk.Coordinate;
 
 import static org.junit.Assert.*;
 

@@ -1,6 +1,10 @@
-package wmaclean.tile;
+package wmaclean.chunk;
 
 import wmaclean.Game;
+import wmaclean.chunk.tile.DirtTile;
+import wmaclean.chunk.tile.GrassTile;
+import wmaclean.chunk.tile.Tile;
+import wmaclean.chunk.tile.TreeTile;
 import wmaclean.gui.Renderable;
 
 import java.awt.Graphics;

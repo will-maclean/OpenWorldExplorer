@@ -1,4 +1,4 @@
-package wmaclean.tile;
+package wmaclean.chunk;
 
 public class Coordinate {
     public float x, y;

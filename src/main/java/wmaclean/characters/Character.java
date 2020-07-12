@@ -2,7 +2,6 @@ package wmaclean.characters;
 
 import wmaclean.Game;
 import wmaclean.gui.Renderable;
-import wmaclean.tile.TileChunk;
 
 import java.awt.Graphics;
 

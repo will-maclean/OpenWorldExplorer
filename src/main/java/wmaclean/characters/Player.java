@@ -1,7 +1,7 @@
 package wmaclean.characters;
 
 import wmaclean.Game;
-import wmaclean.tile.TileChunk;
+import wmaclean.chunk.TileChunk;
 
 import java.awt.Graphics;
 

@@ -1,7 +1,7 @@
 package wmaclean.gui;
 
 import wmaclean.Game;
-import wmaclean.tile.TileChunk;
+import wmaclean.chunk.TileChunk;
 import wmaclean.time.Clock;
 
 import java.awt.Color;

@@ -3,7 +3,7 @@ package wmaclean.characters.npc;
 import wmaclean.Game;
 import wmaclean.characters.Sprite;
 import wmaclean.characters.SpriteDirection;
-import wmaclean.tile.TileChunk;
+import wmaclean.chunk.TileChunk;
 
 public class Hawk extends PassiveAnimal{
 
