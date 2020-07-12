@@ -1,6 +1,9 @@
 package wmaclean.characters;
 
 import wmaclean.gui.Textures;
+import wmaclean.time.Clock;
+import wmaclean.time.TimeOfDay;
+
 import java.awt.image.BufferedImage;
 
 public class Sprite {
@@ -10,6 +13,7 @@ public class Sprite {
     private int h;
     private int wSprite;
     private int hSprite;
+    private final String file;
 
     public Sprite(String file, int w, int h, int[] order){
         this(file, w, h);
@@ -29,6 +33,7 @@ public class Sprite {
     public Sprite(String file, int w, int h){
         this.w = w;
         this.h = h;
+        this.file = file;
 
         System.out.println("Loading: " + file + "...");
         spriteSheet = loadSprite(file);
@@ -60,12 +65,17 @@ public class Sprite {
         return sprite;
     }
 
+    public void updateTime(){
+        this.getSpriteArray();
+    }
+
     private void loadSpriteArray(){
+        TimeOfDay timeOfDay = Clock.getTimeOfDay();
         this.spriteArray = new BufferedImage[h][w];
 
         for(int x = 0; x < h; x++){
             for(int y = 0; y < w; y++){
-                spriteArray[x][y] = getSprite(y, x);
+                spriteArray[x][y] = timeOfDay.tintImage(getSprite(y, x));
             }
         }
     }

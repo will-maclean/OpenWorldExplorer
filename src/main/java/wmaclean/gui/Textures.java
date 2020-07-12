@@ -1,5 +1,8 @@
 package wmaclean.gui;
 
+import wmaclean.time.Clock;
+import wmaclean.time.TimeOfDay;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -16,11 +19,12 @@ public class Textures {
 
     public static BufferedImage loadImage(String name) {
         BufferedImage img = null;
+        TimeOfDay timeOfDay = Clock.getTimeOfDay();
         try {
             img = ImageIO.read(new File(resourcesPath.concat(name)));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return img;
+        return timeOfDay.tintImage(img);
     }
 }

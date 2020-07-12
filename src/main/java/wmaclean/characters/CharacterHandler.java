@@ -16,7 +16,7 @@ public class CharacterHandler {
     private final List<Character> characterList;
     private final Game game;
 
-    private static final float PASSIVE_SPAWN_RATE = 0.0002f;
+    private static final float PASSIVE_SPAWN_RATE = 0.001f;
     private static final int NPC_MAX_DIST = 200;
 
     public CharacterHandler(Game game) {
