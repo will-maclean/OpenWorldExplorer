@@ -1,12 +1,14 @@
 package wmaclean.characters;
 
 import wmaclean.Game;
+import wmaclean.tile.TileChunk;
 
 import java.awt.Graphics;
 
-public abstract class Character {
+public abstract class Character implements Comparable<Character>{
 
-    protected float x, y, width, height, velX, velY;
+    protected Float x, y;
+    protected float width, height, velX, velY;
     protected Game game;
     public final CharID id;
 
@@ -30,7 +32,7 @@ public abstract class Character {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(float x) {
         this.x = x;
     }
 
@@ -38,7 +40,7 @@ public abstract class Character {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(float y) {
         this.y = y;
     }
 
@@ -147,5 +149,10 @@ public abstract class Character {
             this.speed = speed;
             ;
         }
+    }
+
+    @Override
+    public int compareTo(Character other) {
+        return this.y.compareTo(other.y);
     }
 }

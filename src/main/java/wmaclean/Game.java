@@ -2,7 +2,6 @@ package wmaclean;
 
 import wmaclean.characters.CharacterHandler;
 import wmaclean.characters.Player;
-import wmaclean.characters.npc.Pig;
 import wmaclean.gui.KeyInput;
 import wmaclean.gui.Window;
 import wmaclean.tile.Coordinate;
@@ -47,7 +46,6 @@ public class Game extends Canvas implements Runnable{
         this.visibleChunks = new LinkedList<>();
         this.characterHandler = new CharacterHandler(this);
         this.characterHandler.setCharacter(new Player(WIDTH / 2, HEIGHT / 2, this));
-        this.characterHandler.setCharacter(new Pig(WIDTH / 4, HEIGHT / 4, this));
         this.addKeyListener(new KeyInput(this.characterHandler));
         this.allChunks.add(new TileChunk(0, 0, this));
         this.visibleChunks.add(allChunks.get(0));
@@ -102,6 +100,7 @@ public class Game extends Canvas implements Runnable{
                 timer += 1000;
                 System.out.println("FPS: " + frames);
                 System.out.println("Chunks: " + this.allChunks.size());
+                System.out.println("Characters: " + this.characterHandler.getCharacterListSize());
                 frames = 0;
             }
         }

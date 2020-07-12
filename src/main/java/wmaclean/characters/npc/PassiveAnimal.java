@@ -34,24 +34,31 @@ public abstract class PassiveAnimal extends NPC {
 
         int i = r.nextInt(4);
         switch (i){
-            case 0:
-                this.velX = 0;
-                this.velY = 0;
             case 1:
                 this.velX = this.speed;
                 this.velY = 0;
+                this.moving = true;
+                break;
             case 2:
                 this.velX = -1 * this.speed;
                 this.velY = 0;
+                this.moving = true;
+                break;
             case 3:
                 this.velY = -1 * this.speed;
                 this.velX = 0;
+                this.moving = true;
+                break;
             case 4:
-                this.velY = -1 * this.speed;
+                this.velY =  this.speed;
                 this.velX = 0;
+                this.moving = true;
+                break;
             default:
                 this.velX = 0;
                 this.velY = 0;
+                this.moving = false;
+                break;
         }
     }
 }

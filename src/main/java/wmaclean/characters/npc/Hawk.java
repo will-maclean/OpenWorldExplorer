@@ -5,19 +5,19 @@ import wmaclean.characters.Sprite;
 import wmaclean.characters.SpriteDirection;
 import wmaclean.tile.TileChunk;
 
-public class Pig extends PassiveAnimal{
+public class Hawk extends PassiveAnimal{
 
-    public static final float DEFAULT_SPEED = 2;
-    private static final String DEFAULT_SPRITE_PATH = "chars/pig/pig1sprite.png";
+    public static final float DEFAULT_SPEED = 4;
+    private static final String DEFAULT_SPRITE_PATH = "chars/birbs/hawk.png";
 
-    public Pig(int x, int y, Game game) {
+    public Hawk(int x, int y, Game game) {
         super(x, y, game, DEFAULT_SPEED);
 
-        int pigSprites = 4;
+        int hawkSprites = 4;
         int[] order = new int[]{
-                2, 3, 0, 1
+                2, 1, 3, 0
         };
-        this.walkingSprite = new Sprite(DEFAULT_SPRITE_PATH, 4, pigSprites, order);
+        this.walkingSprite = new Sprite(DEFAULT_SPRITE_PATH, 3, hawkSprites, order);
         this.spriteDirection = SpriteDirection.down;
         this.moving = false;
 

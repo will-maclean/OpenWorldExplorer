@@ -14,18 +14,19 @@ public class Sprite {
     private int wSprite;
     private int hSprite;
 
+    public Sprite(String file, int w, int h, int[] order){
+        this(file, w, h);
 
-    public Sprite(String file){
-        w = TileChunk.tileSize;
-        h = TileChunk.tileSize;
+        assert order.length == h;
 
-        System.out.println("Loading: " + file + "...");
-        spriteSheet = loadSprite(file );
+        BufferedImage[][] newArray = new BufferedImage[h][w];
 
-        wSprite = this.spriteSheet.getWidth() / w;
-        hSprite = this.spriteSheet.getHeight() / h;
+        for(int i = 0; i < order.length; i++){
+            int index = order[i];
+            newArray[index] = this.spriteArray[i];
+        }
 
-        loadSpriteArray();
+        this.spriteArray = newArray;
     }
 
     public Sprite(String file, int w, int h){
@@ -41,11 +42,6 @@ public class Sprite {
         loadSpriteArray();
     }
 
-    public void setSize(int width, int height){
-        this.setWidth(width);
-        this.setHeight(height);
-    }
-
     public void setWidth(int width){
         this.w = width;
         this.wSprite = this.spriteSheet.getWidth() / this.w;
@@ -54,14 +50,6 @@ public class Sprite {
     public void setHeight(int h) {
         this.h = h;
         this.hSprite = this.spriteSheet.getHeight() / this.h;
-    }
-
-    public int getWidth() {
-        return this.w;
-    }
-
-    public int getHeight() {
-        return h;
     }
 
     private BufferedImage loadSprite(String file){
@@ -93,8 +81,4 @@ public class Sprite {
     public BufferedImage[][] getSpriteArray(){
         return this.spriteArray;
     }
-
-    public void tick(){}
-
-    public void render(Graphics2D g, int x, int y, int width, int height){}
 }

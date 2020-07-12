@@ -27,4 +27,22 @@ public class Player extends Character{
         this.spriteIndex = 0;
         this.ticksSinceFrameChange = 0;
     }
+
+    public void render(Graphics g) {
+        if (!this.moving) {
+            g.drawImage(this.walkingSprite.getSpriteArray()[this.spriteDirection.directionIndex()][0],
+                    (int) (this.x + this.game.posX + TileChunk.tileSize - this.width),
+                    (int) (this.y + this.game.posY + TileChunk.tileSize - this.height),
+                    (int) this.width,
+                    (int) this.height,
+                    null);
+        } else {
+            g.drawImage(this.walkingSprite.getSpriteArray()[this.spriteDirection.directionIndex()][this.spriteIndex],
+                    (int) (this.x + this.game.posX + TileChunk.tileSize - this.width),
+                    (int) (this.y + this.game.posY + TileChunk.tileSize - this.height),
+                    (int) this.width,
+                    (int) this.height,
+                    null);
+        }
+    }
 }
