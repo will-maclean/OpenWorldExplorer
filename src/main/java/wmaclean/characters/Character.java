@@ -1,11 +1,12 @@
 package wmaclean.characters;
 
 import wmaclean.Game;
+import wmaclean.gui.Renderable;
 import wmaclean.tile.TileChunk;
 
 import java.awt.Graphics;
 
-public abstract class Character implements Comparable<Character>{
+public abstract class Character implements Comparable<Character>, Renderable {
 
     protected Float x, y;
     protected float width, height, velX, velY;

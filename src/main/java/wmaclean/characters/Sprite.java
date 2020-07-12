@@ -1,9 +1,6 @@
 package wmaclean.characters;
 
 import wmaclean.gui.Textures;
-import wmaclean.tile.TileChunk;
-
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 public class Sprite {

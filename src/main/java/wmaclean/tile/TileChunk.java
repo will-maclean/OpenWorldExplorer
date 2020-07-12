@@ -1,10 +1,11 @@
 package wmaclean.tile;
 
 import wmaclean.Game;
+import wmaclean.gui.Renderable;
 
 import java.awt.Graphics;
 
-public class TileChunk implements Comparable<TileChunk>{
+public class TileChunk implements Comparable<TileChunk>, Renderable {
 
     private static final int numTilesWidth = 16;
     public static final int tileSize = 32;
