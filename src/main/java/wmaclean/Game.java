@@ -17,11 +17,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-/*
-fixme:
-1. gonna have to sort chunks based on their y coords to make sure they render from the top
-down.
- */
 public class Game extends Canvas implements Runnable{
 
     private Thread thread;
