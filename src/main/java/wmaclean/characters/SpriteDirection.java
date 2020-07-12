@@ -1,5 +1,7 @@
 package wmaclean.characters;
 
+import java.util.Random;
+
 public enum SpriteDirection {
     up{
         @Override
@@ -25,6 +27,12 @@ public enum SpriteDirection {
             return 3;
         }
     };
+
+    public static SpriteDirection random() {
+        Random r = new Random();
+        int index = r.nextInt(SpriteDirection.values().length);
+        return SpriteDirection.values()[index];
+    }
 
     public abstract int directionIndex();
 }

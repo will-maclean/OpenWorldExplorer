@@ -1,20 +1,19 @@
 package wmaclean.characters;
 
 import wmaclean.gui.Textures;
-import wmaclean.tile.Coordinate;
 import wmaclean.tile.TileChunk;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.util.List;
 
 public class Sprite {
     private BufferedImage spriteSheet = null;
     private BufferedImage[][] spriteArray;
-    public int w;
-    public int h;
-    public int wSprite;
-    public int hSprite;
+    private int w;
+    private int h;
+    private int wSprite;
+    private int hSprite;
+
 
     public Sprite(String file){
         w = TileChunk.tileSize;
@@ -91,35 +90,11 @@ public class Sprite {
         return this.spriteSheet.getSubimage(x * wSprite, y * hSprite, wSprite, hSprite);
     }
 
-    public BufferedImage getSpriteSheet() {
-        return spriteSheet;
-    }
-
     public BufferedImage[][] getSpriteArray(){
         return this.spriteArray;
     }
 
-    public BufferedImage[] getSpriteArray(int i){
-        return this.spriteArray[i];
-    }
+    public void tick(){}
 
-    public static void drawArray(Graphics2D g,
-                                 List<BufferedImage> img,
-                                 Coordinate pos,
-                                 int width,
-                                 int height,
-                                 int xOffset,
-                                 int yOffset){
-        float x = pos.x;
-        float y = pos.y;
-
-        for (BufferedImage bufferedImage : img) {
-            if (bufferedImage != null) {
-                g.drawImage(bufferedImage, (int) x, (int) y, width, height, null);
-            }
-
-            x += xOffset;
-            y += yOffset;
-        }
-    }
+    public void render(Graphics2D g, int x, int y, int width, int height){}
 }

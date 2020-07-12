@@ -29,22 +29,22 @@ public class KeyInput extends KeyAdapter {
         Player player = this.handler.getPlayer();
 
         if(key == KeyEvent.VK_W){
-            player.setVelY(-1 * Player.speed);
+            player.setVelY(-1 * player.getSpeed());
             keyDown[0] = true;
         }
 
         if(key == KeyEvent.VK_S){
-            player.setVelY(Player.speed);
+            player.setVelY(player.getSpeed());
             keyDown[1] = true;
         }
 
         if(key == KeyEvent.VK_D){
-            player.setVelX(Player.speed);
+            player.setVelX(player.getSpeed());
             keyDown[2] = true;
         }
 
         if(key == KeyEvent.VK_A){
-            player.setVelX(-1 * Player.speed);
+            player.setVelX(-1 * player.getSpeed());
             keyDown[3] = true;
         }
     }

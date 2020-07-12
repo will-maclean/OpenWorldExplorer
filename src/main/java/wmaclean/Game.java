@@ -2,6 +2,7 @@ package wmaclean;
 
 import wmaclean.characters.CharacterHandler;
 import wmaclean.characters.Player;
+import wmaclean.characters.npc.Pig;
 import wmaclean.gui.KeyInput;
 import wmaclean.gui.Window;
 import wmaclean.tile.Coordinate;
@@ -26,7 +27,7 @@ public class Game extends Canvas implements Runnable{
 
     private Thread thread;
     private boolean running = false;
-    public static final int WIDTH = 800, HEIGHT = 800;
+    public static final int WIDTH = 800, HEIGHT = 600;
     public static final String TITLE = "EXPLORER";
     public static final Color backgroundColor = Color.BLACK;
 
@@ -46,6 +47,7 @@ public class Game extends Canvas implements Runnable{
         this.visibleChunks = new LinkedList<>();
         this.characterHandler = new CharacterHandler(this);
         this.characterHandler.setCharacter(new Player(WIDTH / 2, HEIGHT / 2, this));
+        this.characterHandler.setCharacter(new Pig(WIDTH / 4, HEIGHT / 4, this));
         this.addKeyListener(new KeyInput(this.characterHandler));
         this.allChunks.add(new TileChunk(0, 0, this));
         this.visibleChunks.add(allChunks.get(0));
