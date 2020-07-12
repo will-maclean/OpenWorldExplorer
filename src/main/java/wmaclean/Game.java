@@ -229,7 +229,7 @@ public class Game extends Canvas implements Runnable{
     private void checkRight(List<TileChunk> newChunks, TileChunk chunk) {
         if(chunk.getRight() == null){
             // need to create a new chunk right
-            TileChunk newChunk = new TileChunk(chunk.x + TileChunk.CHUNKSIZE, chunk.y, this, true);
+            TileChunk newChunk = new TileChunk(chunk.x + TileChunk.CHUNK_SIZE, chunk.y, this, true);
             addConnections(newChunk);
             newChunks.add(newChunk);
             this.allChunks.add(newChunk);
@@ -242,7 +242,7 @@ public class Game extends Canvas implements Runnable{
     private void checkDown(List<TileChunk> newChunks, TileChunk chunk) {
         if(chunk.getDown() == null){
             // need to create a new chunk above
-            TileChunk newChunk = new TileChunk(chunk.x, chunk.y + TileChunk.CHUNKSIZE, this, true);
+            TileChunk newChunk = new TileChunk(chunk.x, chunk.y + TileChunk.CHUNK_SIZE, this, true);
             addConnections(newChunk);
             newChunks.add(newChunk);
             this.allChunks.add(newChunk);
@@ -257,7 +257,7 @@ public class Game extends Canvas implements Runnable{
     private void checkUp(List<TileChunk> newChunks, TileChunk chunk) {
         if(chunk.getUp() == null){
             // need to create a new chunk above
-            TileChunk newChunk = new TileChunk(chunk.x, chunk.y - TileChunk.CHUNKSIZE, this, true);
+            TileChunk newChunk = new TileChunk(chunk.x, chunk.y - TileChunk.CHUNK_SIZE, this, true);
             addConnections(newChunk);
             newChunks.add(newChunk);
             this.allChunks.add(newChunk);
@@ -272,7 +272,7 @@ public class Game extends Canvas implements Runnable{
     private void checkLeft(List<TileChunk> newChunks, TileChunk chunk) {
         if(chunk.getLeft() == null){
             // need to create a new chunk left
-            TileChunk newChunk = new TileChunk(chunk.x - TileChunk.CHUNKSIZE, chunk.y, this, true);
+            TileChunk newChunk = new TileChunk(chunk.x - TileChunk.CHUNK_SIZE, chunk.y, this, true);
             addConnections(newChunk);
             newChunks.add(newChunk);
             this.allChunks.add(newChunk);

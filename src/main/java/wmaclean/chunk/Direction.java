@@ -9,7 +9,7 @@ public enum Direction {
 
         @Override
         public float yChunkOffset() {
-            return -1 * TileChunk.CHUNKSIZE;
+            return -1 * TileChunk.CHUNK_SIZE;
         }
     },
     DOWN{
@@ -20,13 +20,13 @@ public enum Direction {
 
         @Override
         public float yChunkOffset() {
-            return TileChunk.CHUNKSIZE;
+            return TileChunk.CHUNK_SIZE;
         }
     },
     LEFT{
         @Override
         public float xChunkOffset() {
-            return -1 * TileChunk.CHUNKSIZE;
+            return -1 * TileChunk.CHUNK_SIZE;
         }
 
         @Override
@@ -37,7 +37,7 @@ public enum Direction {
     RIGHT{
         @Override
         public float xChunkOffset() {
-            return TileChunk.CHUNKSIZE;
+            return TileChunk.CHUNK_SIZE;
         }
 
         @Override

@@ -11,8 +11,8 @@ public class GameTest {
     public void gameStartLogic(){
         // just make sure chunks are smaller than the screen
 
-        assertTrue(Game.WIDTH > TileChunk.CHUNKSIZE);
-        assertTrue(Game.HEIGHT > TileChunk.CHUNKSIZE);
+        assertTrue(Game.WIDTH > TileChunk.CHUNK_SIZE);
+        assertTrue(Game.HEIGHT > TileChunk.CHUNK_SIZE);
     }
 
     @Test
@@ -26,8 +26,8 @@ public class GameTest {
         Game game = new Game();
         assertEquals(1, game.getVisibleChunks().size());
 
-        int expectedChunks = (Game.WIDTH / TileChunk.CHUNKSIZE) * (Game.HEIGHT / TileChunk.CHUNKSIZE);
-        for(int i = 0; i < Game.WIDTH / TileChunk.CHUNKSIZE - 1; i++){
+        int expectedChunks = (Game.WIDTH / TileChunk.CHUNK_SIZE) * (Game.HEIGHT / TileChunk.CHUNK_SIZE);
+        for(int i = 0; i < Game.WIDTH / TileChunk.CHUNK_SIZE - 1; i++){
             game.checkVisibleChunks();
         }
         assertEquals(game.getVisibleChunks().size(), expectedChunks);

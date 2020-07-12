@@ -13,7 +13,7 @@ public class TileChunk implements Comparable<TileChunk>, Renderable {
 
     private static final int numTilesWidth = 16;
     public static final int tileSize = 32;
-    public static final int CHUNKSIZE = numTilesWidth * tileSize;
+    public static final int CHUNK_SIZE = numTilesWidth * tileSize;
 
     public final Tile[][] tiles;
     private final Game game;
@@ -42,9 +42,9 @@ public class TileChunk implements Comparable<TileChunk>, Renderable {
 
         this.corners = new Coordinate[]{
                 new Coordinate(x, y),
-                new Coordinate(x + CHUNKSIZE, y),
-                new Coordinate(x, y + CHUNKSIZE),
-                new Coordinate(x + CHUNKSIZE, y + CHUNKSIZE)
+                new Coordinate(x + CHUNK_SIZE, y),
+                new Coordinate(x, y + CHUNK_SIZE),
+                new Coordinate(x + CHUNK_SIZE, y + CHUNK_SIZE)
         };
     }
 
