@@ -4,7 +4,7 @@ package wmaclean;
  * Hello world!
  *
  */
-public class App 
+public class Explorer
 {
     public static void main( String[] args )
     {
