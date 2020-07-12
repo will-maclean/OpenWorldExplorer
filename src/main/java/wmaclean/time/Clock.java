@@ -6,7 +6,7 @@ public class Clock {
     private static final  LocalTime[] changeTimes = new LocalTime[]{
             LocalTime.parse("05:00"),  // start sunrise
             LocalTime.parse("08:00"),  // start day
-            LocalTime.parse("17:00"), // start sunset
+            LocalTime.parse("17:34"), // start sunset
             LocalTime.parse("20:00")  // start night
     };
 

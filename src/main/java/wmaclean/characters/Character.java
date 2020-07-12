@@ -156,4 +156,10 @@ public abstract class Character implements Comparable<Character>, Renderable {
     public int compareTo(Character other) {
         return this.y.compareTo(other.y);
     }
+
+    public void timeOfDayChanged(){
+        loadSprite();
+    }
+
+    protected abstract void loadSprite();
 }

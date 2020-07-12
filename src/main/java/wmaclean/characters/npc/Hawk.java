@@ -12,16 +12,20 @@ public class Hawk extends PassiveAnimal{
 
     public Hawk(int x, int y, Game game) {
         super(x, y, game, DEFAULT_SPEED);
-
-        int hawkSprites = 4;
-        int[] order = new int[]{
-                2, 1, 3, 0
-        };
-        this.walkingSprite = new Sprite(DEFAULT_SPRITE_PATH, 3, hawkSprites, order);
+        loadSprite();
         this.spriteDirection = SpriteDirection.down;
         this.moving = false;
 
         this.width = TileChunk.tileSize;
         this.height = TileChunk.tileSize;
+    }
+
+    @Override
+    protected void loadSprite() {
+        int hawkSprites = 4;
+        int[] order = new int[]{
+                2, 1, 3, 0
+        };
+        this.walkingSprite = new Sprite(DEFAULT_SPRITE_PATH, 3, hawkSprites, order);
     }
 }

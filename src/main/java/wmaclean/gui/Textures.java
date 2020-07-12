@@ -12,10 +12,9 @@ public class Textures {
 
     public static final String resourcesPath = "src/main/resources/";
 
-    public static final BufferedImage grassTexture = loadImage("grassTexture2.png");
-    public static final BufferedImage dirtTexture = loadImage("dirtTexture.png");
-    public static final BufferedImage playerSprite = loadImage("playerSprite.png");
-    public static final BufferedImage treeSprite = loadImage("treeSprite.png");
+    public static  BufferedImage grassTexture = loadImage("grassTexture2.png");
+    public static  BufferedImage dirtTexture = loadImage("dirtTexture.png");
+    public static  BufferedImage treeSprite = loadImage("treeSprite.png");
 
     public static BufferedImage loadImage(String name) {
         BufferedImage img = null;
@@ -26,5 +25,11 @@ public class Textures {
             e.printStackTrace();
         }
         return timeOfDay.tintImage(img);
+    }
+
+    public static void timeChanged(){
+        Textures.grassTexture= loadImage("grassTexture2.png");
+        Textures.dirtTexture = loadImage("dirtTexture.png");
+        Textures.treeSprite = loadImage("treeSprite.png");
     }
 }

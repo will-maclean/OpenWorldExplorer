@@ -3,10 +3,13 @@ package wmaclean;
 import wmaclean.characters.CharacterHandler;
 import wmaclean.characters.Player;
 import wmaclean.gui.KeyInput;
+import wmaclean.gui.Textures;
 import wmaclean.gui.Window;
 import wmaclean.tile.Coordinate;
 import wmaclean.tile.Direction;
 import wmaclean.tile.TileChunk;
+import wmaclean.time.Clock;
+import wmaclean.time.TimeOfDay;
 
 import java.awt.Canvas;
 import java.awt.Color;
@@ -31,12 +34,14 @@ public class Game extends Canvas implements Runnable{
     private final List<TileChunk> allChunks;
     private final List<TileChunk> visibleChunks;
     private final CharacterHandler characterHandler;
+    private TimeOfDay timeOfDay;
 
     public Game(){
 
         this.posX = 0;
         this.posY = 0;
 
+        this.timeOfDay = Clock.getTimeOfDay();
         this.allChunks = new LinkedList<>();
         this.visibleChunks = new LinkedList<>();
         this.characterHandler = new CharacterHandler(this);
@@ -126,10 +131,23 @@ public class Game extends Canvas implements Runnable{
     private void tick() {
         checkVisibleChunks();
         sortVisibleChunks();
+        checkTimeOfDayChange();
         this.characterHandler.tick();
         Player player = this.characterHandler.getPlayer();
         this.posX -= player.getVelX();
         this.posY -= player.getVelY();
+    }
+
+    private void checkTimeOfDayChange() {
+        if(Clock.getTimeOfDay() != this.timeOfDay){
+            this.timeOfDay = Clock.getTimeOfDay();
+            timeOfDayChanged();
+        }
+    }
+
+    private void timeOfDayChanged() {
+        this.characterHandler.timeOfDayChanged();
+        Textures.timeChanged();
     }
 
     private void sortVisibleChunks() {

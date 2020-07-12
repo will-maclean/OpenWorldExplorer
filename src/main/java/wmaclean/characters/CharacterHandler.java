@@ -102,4 +102,10 @@ public class CharacterHandler {
      public int getCharacterListSize(){
         return this.characterList.size();
      }
+
+    public void timeOfDayChanged() {
+        for(Character character : this.characterList){
+            character.timeOfDayChanged();
+        }
+    }
 }

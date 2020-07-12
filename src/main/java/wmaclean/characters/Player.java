@@ -21,7 +21,7 @@ public class Player extends Character{
         this.velX = 0;
         this.velY = 0;
 
-        this.walkingSprite = new Sprite(spritePath + "walking.png", 9, 4);
+        loadSprite();
         this.spriteDirection = SpriteDirection.down;
         this.moving = false;
         this.spriteIndex = 0;
@@ -44,5 +44,10 @@ public class Player extends Character{
                     (int) this.height,
                     null);
         }
+    }
+
+    @Override
+    protected void loadSprite() {
+        this.walkingSprite = new Sprite(spritePath + "walking.png", 9, 4);
     }
 }
