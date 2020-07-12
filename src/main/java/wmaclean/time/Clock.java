@@ -1,5 +1,6 @@
 package wmaclean.time;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class Clock {
 
@@ -28,5 +29,10 @@ public class Clock {
         }else {
             return TimeOfDay.Moonlight;
         }
+    }
+
+    public static String getTimeString() {
+        LocalTime time = Clock.getTime();
+        return time.format(DateTimeFormatter.ISO_LOCAL_TIME).substring(0, 5);
     }
 }

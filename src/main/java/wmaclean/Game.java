@@ -2,6 +2,7 @@ package wmaclean;
 
 import wmaclean.characters.CharacterHandler;
 import wmaclean.characters.Player;
+import wmaclean.gui.HUD;
 import wmaclean.gui.KeyInput;
 import wmaclean.gui.Textures;
 import wmaclean.gui.Window;
@@ -35,6 +36,7 @@ public class Game extends Canvas implements Runnable{
     private final List<TileChunk> visibleChunks;
     private final CharacterHandler characterHandler;
     private TimeOfDay timeOfDay;
+    private final HUD hud;
 
     public Game(){
 
@@ -49,6 +51,7 @@ public class Game extends Canvas implements Runnable{
         this.addKeyListener(new KeyInput(this.characterHandler));
         this.allChunks.add(new TileChunk(0, 0, this));
         this.visibleChunks.add(allChunks.get(0));
+        this.hud = new HUD();
     }
 
     public void begin(){
@@ -123,6 +126,8 @@ public class Game extends Canvas implements Runnable{
         }
 
         this.characterHandler.render(g);
+
+        this.hud.render(g);
 
         g.dispose();
         bs.show();
