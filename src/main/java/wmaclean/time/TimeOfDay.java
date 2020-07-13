@@ -27,7 +27,7 @@ public enum TimeOfDay {
     Moonlight{
         @Override
         public BufferedImage tintImage(BufferedImage image) {
-            return TimeOfDay.tint(image, 0.5f, 0.6f, 1f, 1f);
+            return TimeOfDay.tint(image, 0.5f, 0.6f, 0.9f, 1f);
         }
     },
     Dark{
