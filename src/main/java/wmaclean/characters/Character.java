@@ -2,6 +2,7 @@ package wmaclean.characters;
 
 import wmaclean.Game;
 import wmaclean.gui.Renderable;
+import wmaclean.items.Inventory;
 
 import java.awt.Graphics;
 
@@ -11,7 +12,6 @@ public abstract class Character implements Comparable<Character>, Renderable {
     protected float width, height, velX, velY;
     protected Game game;
     public final CharID id;
-
     protected float speed;
     protected String spritePath;
     protected Sprite walkingSprite;
@@ -21,11 +21,14 @@ public abstract class Character implements Comparable<Character>, Renderable {
     protected static final int ticksPerSpriteFrame = 8;
     protected int ticksSinceFrameChange;
 
+    public final Inventory inventory;
+
     public Character(final float x, final float y, Game game, CharID charID) {
         this.x = x;
         this.y = y;
         this.game = game;
         this.id = charID;
+        this.inventory = new Inventory();
     }
 
     public float getX() {
