@@ -9,6 +9,8 @@ import wmaclean.gui.Window;
 import wmaclean.chunk.Coordinate;
 import wmaclean.chunk.Direction;
 import wmaclean.chunk.TileChunk;
+import wmaclean.items.SpawnedItemHandler;
+import wmaclean.items.consumable.Apple;
 import wmaclean.time.Clock;
 import wmaclean.time.TimeOfDay;
 
@@ -35,6 +37,7 @@ public class Game extends Canvas implements Runnable{
     private final List<TileChunk> allChunks;
     private final List<TileChunk> visibleChunks;
     private final CharacterHandler characterHandler;
+    private final SpawnedItemHandler spawnedItemHandler;
     private TimeOfDay timeOfDay;
     private final HUD hud;
 
@@ -48,6 +51,12 @@ public class Game extends Canvas implements Runnable{
         this.visibleChunks = new LinkedList<>();
         this.characterHandler = new CharacterHandler(this);
         this.characterHandler.setCharacter(new Player(WIDTH / 2, HEIGHT / 2, this));
+
+        this.spawnedItemHandler = new SpawnedItemHandler();
+        Apple apple = new Apple(this);
+        apple.spawn(50, 50);
+        this.spawnedItemHandler.add(apple);
+
         this.addKeyListener(new KeyInput(this.characterHandler));
         this.allChunks.add(new TileChunk(0, 0, this));
         this.visibleChunks.add(allChunks.get(0));
@@ -126,6 +135,7 @@ public class Game extends Canvas implements Runnable{
         }
 
         this.characterHandler.render(g);
+        this.spawnedItemHandler.render(g);
 
         this.hud.render(g);
 

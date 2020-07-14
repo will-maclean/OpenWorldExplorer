@@ -1,11 +1,11 @@
 package wmaclean.chunk;
 
 public class Coordinate {
-    public float x, y;
+    public Float x, y;
 
     public Coordinate(){}
 
-    public Coordinate(int x, int y){
+    public Coordinate(float x, float y){
         this.x = x;
         this.y = y;
     }
@@ -18,6 +18,6 @@ public class Coordinate {
 
         Coordinate other = (Coordinate) obj;
 
-        return this.x == other.x && this.y == other.y;
+        return this.x.equals(other.x) && this.y.equals(other.y);
     }
 }

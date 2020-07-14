@@ -147,13 +147,6 @@ public abstract class Character implements Comparable<Character>, Renderable {
         return speed;
     }
 
-    public void setSpeed(float speed) {
-        if (speed >= 0) {
-            this.speed = speed;
-            ;
-        }
-    }
-
     @Override
     public int compareTo(Character other) {
         return this.y.compareTo(other.y);
